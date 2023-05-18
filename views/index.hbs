@@ -1,14 +1,21 @@
-<form action="/" method="post">
+<img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="logo"
+    style="height:300px" class="m-5">
+
+<form action="/" method="post" style="width: 300px;">
+
     <div class="mb-3">
         <label for="longUrlInput" class="form-label">原網址</label>
         <input type="url" class="form-control" id="longUrlInput" placeholder="http://xxx.ooo" name="longUrl"
             value="{{longUrl}}" required>
     </div>
+
+    {{#if shortUrlCode}}
     <div class="mb-3">
-        <label for="longUrlInput" class="form-label">原網址</label>
+        <label for="longUrlInput" class="form-label">短網址</label>
         <input type="string" class="form-control" id="longUrlInput" placeholder="縮短的網址" name="shortUrlcode"
-            value="www.GGG/{{shortUrlCode}}">
+            value="{{domain}}/{{shortUrlCode}}">
     </div>
+    {{/if}}
     <button type="submit" class="btn btn-primary">產生</button>
 </form>
 
