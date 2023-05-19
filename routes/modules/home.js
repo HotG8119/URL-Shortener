@@ -14,6 +14,9 @@ router.post("/", (req, res) => {
   return ShortUrl.findOne({ longUrl })
     .lean()
     .then(urlInfo => {
+      // 如果資料庫已有該筆資料，就直接回傳
+      // 如果資料庫沒有該筆資料，就產生shortUrlCode，並存入資料庫
+
       if (urlInfo) {
         const shortUrlCode = urlInfo.shortUrlCode;
         res.render("index", { domain, longUrl, shortUrlCode });
