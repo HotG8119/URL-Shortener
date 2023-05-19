@@ -6,12 +6,12 @@
     <div class="mb-3">
         <label for="longUrlInput" class="form-label">原網址</label>
         <input type="url" class="form-control" id="longUrlInput" placeholder="http://xxx.ooo" name="longUrl"
-            value="http://{{longUrl}}" required>
+            value="{{longUrl}}" required>
     </div>
 
     <div class="mb-3">
         <label for="longUrlInput" class="form-label">短網址</label>
-        <input type="string" class="form-control" id="shortUrl" name="shortUrlcode" value="{{domain}}/{{shortUrlCode}}">
+        <input type="string" class="form-control" id="shortUrl" name="shortUrlCode" value="{{domain}}/{{shortUrlCode}}">
     </div>
 
     <button type="submit" class="btn btn-primary">產生</button>
@@ -23,7 +23,7 @@
 
 <script>
     function copyToClipboard() {
-        var copyText = document.getElementById("shortUrl");
+        const copyText = document.querySelector("#shortUrl");
         copyText.select();
         copyText.setSelectionRange(0, 99999)
         document.execCommand("copy");

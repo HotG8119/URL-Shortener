@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const longUrl = req.body.longUrl.replace("http://", "");
+  const longUrl = req.body.longUrl;
 
   return ShortUrl.findOne({ longUrl })
     .lean()
@@ -40,11 +40,10 @@ router.post("/", (req, res) => {
 
 router.get("/:shortUrlCode", (req, res) => {
   const shortUrlCode = req.params.shortUrlCode;
-
   return ShortUrl.findOne({ shortUrlCode })
     .lean()
     .then(urlInfo => {
-      res.redirect(`http://${urlInfo.longUrl}`);
+      res.redirect(`${urlInfo.longUrl}`);
     })
     .catch(error => {
       console.log(error);
