@@ -40,7 +40,9 @@ router.get("/:shortUrlCode", (req, res) => {
 
   return ShortUrl.findOne({ shortUrlCode })
     .lean()
-    .then(urlInfo => res.redirect(`http://${urlInfo.longUrl}`))
+    .then(urlInfo => {
+      res.redirect(`http://${urlInfo.longUrl}`);
+    })
     .catch(error => {
       console.log(error);
       res.render("error", { error: error.message });

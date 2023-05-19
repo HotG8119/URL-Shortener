@@ -9,14 +9,24 @@
             value="http://{{longUrl}}" required>
     </div>
 
-    {{#if shortUrlCode}}
     <div class="mb-3">
         <label for="longUrlInput" class="form-label">短網址</label>
-        <input type="string" class="form-control" id="longUrlInput" placeholder="縮短的網址" name="shortUrlcode"
-            value="{{domain}}/{{shortUrlCode}}">
+        <input type="string" class="form-control" id="shortUrl" name="shortUrlcode" value="{{domain}}/{{shortUrlCode}}">
     </div>
-    {{/if}}
+
     <button type="submit" class="btn btn-primary">產生</button>
+    {{#if shortUrlCode}}
+    <button class="btn btn-primary" onclick="copyToClipboard()">複製短網址</button>
+    {{/if}}
 </form>
 
-<form action=""></form>
+
+<script>
+    function copyToClipboard() {
+        var copyText = document.getElementById("shortUrl");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+        alert("已複製短網址: " + copyText.value);
+    }
+</script>
